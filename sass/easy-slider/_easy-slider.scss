@@ -9,6 +9,7 @@
         margin-top: 25px;
     }
     &__slide {
+        height: 500px;
         img {
             width: 100%;
             height: 100%;
@@ -16,24 +17,18 @@
         }
     }
     &__left {
-        cursor: pointer;
-        img {
-            width: 100%;
-        }
+        @extend %direction;
     }
     &__nbr {
         font-size: 30px;
         display: flex;
         align-items: center;
+        font-size: 33px;
         span {
             margin: 0 15px;
-            font-size: 44px;
         }
     }
     &__right {
-        cursor: pointer;
-        img {
-            width: 100%;
-        }
+        @extend %direction;
     }
 }
