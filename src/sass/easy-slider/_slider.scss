@@ -1,0 +1,23 @@
+.slider {
+    padding-top: 25px;
+    &__counter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__left {
+        @extend %direction;
+    }
+    &__nbr {
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        font-size: 33px;
+        span {
+            margin: 0 15px;
+        }
+    }
+    &__right {
+        @extend %direction;
+    }
+}

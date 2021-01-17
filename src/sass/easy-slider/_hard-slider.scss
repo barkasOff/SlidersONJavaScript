@@ -1,6 +1,8 @@
-.easy-slider {
+.hard-slider {
+    padding-bottom: 25px;
     &__wrapper {
         margin-top: 25px;
+        overflow: hidden;
     }
     &__slide {
         height: 500px;

@@ -23,10 +23,10 @@ const   easySlider = () => {
         initSlide(slideI, cur);
     };
     const   slides = document.querySelectorAll('.easy-slider__slide'),
-            prev = document.querySelector('.easy-slider__left'),
-            next = document.querySelector('.easy-slider__right'),
-            cur = document.querySelector('#easy-slider__cur'),
-            total = document.querySelector('#easy-slider__total');
+            prev = document.querySelector('#es-left'),
+            next = document.querySelector('#es-right'),
+            cur = document.querySelector('#es-cur'),
+            total = document.querySelector('#es-total');
     let     slideI = 1;
 
     showSlide(slideI);
