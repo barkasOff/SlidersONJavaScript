@@ -1,3 +1,5 @@
+import initSlide from './slider';
+
 const   easySlider = () => {
     const   showSlide = (n) => {
         if (n > slides.length) {
@@ -9,13 +11,6 @@ const   easySlider = () => {
 
         slides.forEach(item => item.classList.add('hide'));
         slides[slideI - 1].classList.remove('hide');
-    };
-    const   initSlide = (n, parent) => {
-        if (n > 9) {
-            parent.textContent = n;
-        } else {
-            parent.textContent = `0${n}`;
-        }
     };
     const   switchSlide = (n) => {
         slideI += n;
