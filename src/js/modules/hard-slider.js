@@ -1,6 +1,10 @@
 import initSlide from './slider';
 
 const hardSlider = () => {
+    const   changeSlideByNav = (navI, navs) => {
+        navs.forEach(item => item.classList.remove('hard-slider__nav_el-active'));
+        navs[navI].classList.add('hard-slider__nav_el-active');
+    };
     const   slides = document.querySelectorAll('.hard-slider__slide'),
             prev = document.querySelector('#hs-left'),
             next = document.querySelector('#hs-right'),
@@ -10,7 +14,8 @@ const hardSlider = () => {
             hardSliderParent = document.querySelector('.hard-slider__wrapper'),
             hardSliderField = document.querySelector('.hard-slider__inner'),
             width = window.getComputedStyle(hardSliderParent).width;
-    const   hardSliderNav = document.createElement('ol');
+    const   hardSliderNav = document.createElement('ol'),
+            navs = [];
     let     slideI = 1,
             offset = 0;
 
@@ -26,6 +31,7 @@ const hardSlider = () => {
             nav.classList.add('hard-slider__nav_el-active');
         }
         hardSliderNav.append(nav);
+        navs.push(nav);
     }
     hardSlider.append(hardSliderNav);
     hardSliderField.style.width = `${100 * slides.length}%`;
@@ -41,6 +47,7 @@ const hardSlider = () => {
             --slideI;
         }
         hardSliderField.style.transform = `translateX(-${offset}px)`;
+        changeSlideByNav(slideI - 1, navs);
         initSlide(slideI, cur);
     });
     next.addEventListener('click', () => {
@@ -52,7 +59,19 @@ const hardSlider = () => {
             ++slideI;
         }
         hardSliderField.style.transform = `translateX(-${offset}px)`;
+        changeSlideByNav(slideI - 1, navs);
         initSlide(slideI, cur);
+    });
+    navs.forEach(nav => {
+        nav.addEventListener('click', e => {
+            const   slideTo = e.target.getAttribute('data-slide-to');
+
+            slideI = slideTo;
+            offset = (slideI - 1) * +width.slice(0, width.length - 2);
+            hardSliderField.style.transform = `translateX(-${offset}px)`;
+            changeSlideByNav(slideI - 1, navs);
+            initSlide(slideI, cur);
+        });
     });
 };
 
